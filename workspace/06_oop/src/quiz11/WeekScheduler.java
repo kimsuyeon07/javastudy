@@ -283,8 +283,8 @@ public class WeekScheduler {
 	} //printAllSchedule() 메서드 종료
 	
 	
-	
-	
+	// 이클립스로 GitHub에 업로드 하는 방법
+	// Git Staging 창에서
 	
 	
 	
