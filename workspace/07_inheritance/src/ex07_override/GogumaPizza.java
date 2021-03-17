@@ -22,7 +22,7 @@ public class GogumaPizza extends Pizza {
 		super.info();  
 		// super : Pizza 를 의미한다.(슈퍼클래스를 찾아간다.)
 		// super.메서드() : Pizza클래스 안에 있는 info() 메서드를 가지고 온다. (GogumaPizza의 수정된 info()정보가 아니라!)
-	}
+	}     
 	
 	
 	

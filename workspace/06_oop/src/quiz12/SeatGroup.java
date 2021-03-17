@@ -20,6 +20,7 @@ public class SeatGroup {
 			seats[i] = new Seat();  //  : (Seat객체 생성) 빈 좌석 생성
 		}
 	}  // 생성자(S, 2, 5000); ==> 생성자 하나하나가 SeatGroup객체로 되어있는 배열로 보여짐.
+<<<<<<< HEAD
 
 	
 	
@@ -132,6 +133,19 @@ public class SeatGroup {
 	
 
 	// method : Getter and Setter
+=======
+	
+	// method
+	public void info() {
+		
+	}
+
+	
+	
+	
+	
+	// method : Getter / Setter
+>>>>>>> 9d4faab8c5a8a9a16b4ac2ee94805518a7ae4ff4
 	public Seat[] getSeats() {
 		return seats;
 	}
@@ -148,5 +162,8 @@ public class SeatGroup {
 	
 	
 	
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 9d4faab8c5a8a9a16b4ac2ee94805518a7ae4ff4
 }

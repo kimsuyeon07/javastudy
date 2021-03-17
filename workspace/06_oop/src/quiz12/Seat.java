@@ -3,7 +3,11 @@ package quiz12;
 public class Seat {
 	
 	// field
+<<<<<<< HEAD
 	private String name;  // 예매자
+=======
+	private String name;  // 에매자
+>>>>>>> 9d4faab8c5a8a9a16b4ac2ee94805518a7ae4ff4
 
 	
 	// constructor
@@ -33,11 +37,17 @@ public class Seat {
 	// 5. 좌석 확인
 	public void info() {
 		if (name == null) {
+<<<<<<< HEAD
 			System.out.print("가능");
 		} else {
 			System.out.print(name.charAt(0) + "*" + (name.length() > 2  ?  name.charAt(name.length() -1)  :  "" ));  // 삼항연산자 사용
 			// -> name의 길이가 2보다 클 때, name의 마지막글자를 보여주겠다.
 			// 이름이 3글자면 김*연  ,  2글자면 김*,  4글자면 abcd -> a*d
+=======
+			System.out.println("가능");
+		} else {
+			System.out.println(name);
+>>>>>>> 9d4faab8c5a8a9a16b4ac2ee94805518a7ae4ff4
 		}
 	}
 	
