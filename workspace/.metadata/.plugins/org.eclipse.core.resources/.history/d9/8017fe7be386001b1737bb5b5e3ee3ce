@@ -1,0 +1,15 @@
+package ex03_has_a;
+
+// has - a 관계 : 가지고 있다.
+
+public class MainClass {
+
+	public static void main(String[] args) {
+
+		
+		
+		
+		
+
+	}
+}

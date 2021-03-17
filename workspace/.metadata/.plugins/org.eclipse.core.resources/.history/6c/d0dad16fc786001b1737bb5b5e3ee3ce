@@ -1,0 +1,93 @@
+package quiz12;
+
+import java.util.Scanner;
+
+public class SeatGroup {
+
+	// field
+	private char seatType; // "S", "R", "A", "B"
+	private int charge; // 요금
+	private Seat[] seats;
+	private Scanner sc = new Scanner(System.in);
+	
+	// constructor
+	public SeatGroup(char seatType, int seatCount, int charge) {
+		this.seatType = seatType;
+		this.charge = charge;
+		this.seats = new Seat[seatCount];  // 배열만 생성 (정보는 아직.)
+		// 배열에 실제 Seat 생성 작업
+		for(int i = 0 ; i < seats.length; i++) {  // seats.length == seatCount
+			seats[i] = new Seat();  //  : (Seat객체 생성) 빈 좌석 생성
+		}
+	}  // 생성자(S, 2, 5000); ==> 생성자 하나하나가 SeatGroup객체로 되어있는 배열로 보여짐.
+	
+	// method
+	public void info() {
+		
+	}
+
+	
+	
+	
+	
+	// 1. method : reservation()
+	// 예약	 1) 결과타입 : boolean (성공 true, 실패 false)
+	//		 2) 메서드명 : reservation
+	// 		 3) 매개변수 : 없다.
+	public boolean reservation() {
+		// 좌석 번호 (seatNo) : 1 ~ 10
+		// seats 배열 인덱스     : 0 ~  9
+		System.out.print("예매할 좌석 번호 :");
+		int seatNo = sc.nextInt();
+		/*줄바꿈*/System.out.println();
+		// 사용자가 예매하려는 좌석은 seats[seatNo - 1] 입니다.
+		
+		// 1). 예매 번호 확인
+		if (seatNo < 1 || seatNo > seats.length) {
+			System.out.println(seatNo + "번은 없는 좌석입니다. 예약을 다시 시도하세요.");
+			/*줄바꿈*/System.out.println();
+			return false;  // 현재 메서드를 끝낸다. (return타입의 메서드 경우 : 메서드 끝내는 방법 !!)
+		} 
+		// 2). 예애 여부 확인
+		if(seats[seatNo - 1].check()) {
+			System.out.print("예매자의 이름을 입력하세요 : ");
+			String name = sc.next();/*줄바꿈*/System.out.println();
+			
+			seats[seatNo - 1].setName(name);
+			System.out.println(seatNo + "번 좌석이 " + name + "님에게 예약되었습니다. 감사합니다.");
+			/*줄바꿈*/System.out.println();
+			return true;
+		}else {
+			System.out.println(seatNo + "번 좌석은 이미 예약된 좌석입니다. 예약을 다시 시도하세요.");
+			/*줄바꿈*/System.out.println();
+			return false;
+		}
+		
+		
+		// 2. method : cancel()
+		// 예약	 1) 결과타입 : boolean (성공 true, 실패 false)
+		//		 2) 메서드명 : reservation
+		// 		 3) 매개변수 : 없다.
+		public boolean cancel() {
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

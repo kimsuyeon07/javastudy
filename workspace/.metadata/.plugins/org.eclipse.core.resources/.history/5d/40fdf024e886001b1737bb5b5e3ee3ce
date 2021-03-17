@@ -1,0 +1,16 @@
+package ex04_constructor;
+
+// 서브클래스 : 자식클래스
+
+// 부모가 먼저 태어나야 자식도 태어날 수 있다.
+public class Student extends Person {
+
+	// field
+	private String school;
+	
+	// constructor
+	
+	
+	
+	
+}

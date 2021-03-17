@@ -1,0 +1,21 @@
+package ex07_override;
+
+public class GogumaPizza extends Pizza {
+
+	// field
+	private String Goguma;
+
+	
+	// constructor
+	public GogumaPizza(String dough, int cheese, String goguma) {
+		super(dough, cheese);
+		Goguma = goguma;
+	}
+	
+	
+	
+	// method
+	
+	
+	
+}

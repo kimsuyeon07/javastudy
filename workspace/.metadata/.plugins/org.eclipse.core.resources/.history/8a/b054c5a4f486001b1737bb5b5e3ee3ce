@@ -1,0 +1,20 @@
+package ex07_override;
+
+public class Pizza {
+
+	// field
+	private String dough; // 도우
+	private int cheese;   // 치즈 양
+
+	
+	// constructor
+	public Pizza(String dough, int cheese) {
+		// super();  => 있어도 되고 없어도 되고.
+		this.dough = dough;
+		this.cheese = cheese;
+	}
+	
+	// method
+	
+	
+}

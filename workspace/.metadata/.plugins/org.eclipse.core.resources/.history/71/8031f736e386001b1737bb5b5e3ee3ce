@@ -1,0 +1,5 @@
+package ex03_has_a;
+
+public class Coord {
+
+}
