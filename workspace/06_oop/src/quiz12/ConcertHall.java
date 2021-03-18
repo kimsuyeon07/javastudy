@@ -1,12 +1,12 @@
 package quiz12;
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 import java.util.Scanner;
 // Ctrl + Shift + O  : 불필요한 import를 제거해준다. (해당 클래스에서 사용하지 않는 것을 알아서 정리)
 =======
 import java.util.Arrays;
 import java.util.Scanner;
->>>>>>> 9d4faab8c5a8a9a16b4ac2ee94805518a7ae4ff4
+//>>>>>>> 9d4faab8c5a8a9a16b4ac2ee94805518a7ae4ff4
 
 public class ConcertHall {
 	
@@ -37,7 +37,7 @@ public class ConcertHall {
 		
 	// method : run (예약)
 	public void run() {
-<<<<<<< HEAD
+//<<<<<<< HEAD
 		// 무한반복문
 		while (true) {
 			menu();
@@ -151,8 +151,7 @@ public class ConcertHall {
 	public void exit() {
 		System.out.println(hallName + " 예매프로그램을 종료합니다.");
 		sc.close();
-	}
-=======
+	
 		for (int i = 0 ; i < seatGroups.length; i++) {
 			System.out.println(seatTypes[i]);
 			System.out.println(Arrays.toString((Seat[])seatGroups[i].getSeats()));
@@ -162,7 +161,7 @@ public class ConcertHall {
 	
 	
 	
->>>>>>> 9d4faab8c5a8a9a16b4ac2ee94805518a7ae4ff4
+//>>>>>>> 9d4faab8c5a8a9a16b4ac2ee94805518a7ae4ff4
 	
 	
 	
