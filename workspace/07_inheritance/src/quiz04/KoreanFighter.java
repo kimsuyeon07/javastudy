@@ -7,6 +7,10 @@ public class KoreanFighter extends Fighter {
 	
 	// constructor
 	public KoreanFighter(String name) {
+		
+		int energy = (int)(Math.random()*100) + 1;
+		int power = (int)(Math.random()*10) + 1;
+		
 		super(name, energy, power);
 		
 	}
