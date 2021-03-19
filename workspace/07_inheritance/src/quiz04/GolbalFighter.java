@@ -24,8 +24,7 @@ public class GolbalFighter extends Fighter {
 //			fighter.setAlive(false);
 		} else {
 			// 공격한 만큼 데미지를 입는다.
-			int fighterEnergy = (fighter.getEnergy() - this.getPower());
-			fighter.setEnergy(fighterEnergy);
+			fighter.setEnergy( fighter.getEnergy() - this.getPower() );
 			System.out.println("공격 : " + this.getName() + " [ " + fighter.getName() + " 남은 에너지 : " + fighter.getEnergy() + " ]");
 		}
 	}

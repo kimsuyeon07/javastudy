@@ -39,7 +39,7 @@ public abstract class Fighter {
 	}
 	public void setEnergy(int energy) {
 		// energy가 음수로 떨어지면 0을 주겠다.  
-		this.energy = this.energy < 0 ? 0 : this.energy;
+		this.energy = (energy < 0) ? 0 : energy;
 		// energy가 0보다 커야 살아있다고 본다.
 		setAlive(this.energy > 0);
 	}
