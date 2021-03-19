@@ -21,6 +21,7 @@ public class GolbalFighter extends Fighter {
 		if(Math.random() < 0.1) {
 			fighter.setEnergy(0);
 			System.out.println(fighter.getName() + " KO!");
+//			fighter.setAlive(false);
 		} else {
 			// 공격한 만큼 데미지를 입는다.
 			fighter.setEnergy(fighter.getEnergy() - this.getPower());

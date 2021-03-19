@@ -23,26 +23,15 @@ public class KoreanFighter extends Fighter {
 		if(Math.random() < 0.2) {
 			fighter.setEnergy(0);
 			System.out.println(fighter.getName() + " KO!");
+			fighter.setAlive(false);
 		  // 아니면 내 power만큼 상대편 energy가 줄어든다.
 		} else {
-			fighter.setEnergy(fighter.getEnergy() - this.getPower());
+			fighter.setEnergy( (fighter.getEnergy()) - (this.getPower()) );
 			System.out.println("공격 : " + this.getName() + " [ " + fighter.getName() + " 남은 에너지 : " + fighter.getEnergy() + " ]");
 		}
-		
 		// 살아있다.
-		
-		
-	
-		
 	}
-		
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	
