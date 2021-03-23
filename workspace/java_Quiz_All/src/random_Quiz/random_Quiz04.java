@@ -30,11 +30,23 @@ public class random_Quiz04 {
 		// 순서가 섞인 배열 생성
 		for (int i = 0 ; i<SIZE ; i++) {
 			for (int j = 0 ; j <SIZE ; j++) {
-				int x = (int)(Math.random()*5) +1;
+				int x = (int)(Math.random()*SIZE) + 0;  // 인덱스번호를 랜덤으로 준다. 
+				int y = (int)(Math.random()*SIZE) + 0;  // 인덱스번호를 랜덤으로 준다.
+				
+				// 배열 교환 
+				int temp = bingo[i][j];
+				bingo[i][j] = bingo[x][y];
+				bingo[x][y] = temp;
 			}
 		}
 		
-		
+		// 출력
+		for (int i = 0 ; i < SIZE ; i++) {
+			for (int j = 0 ; j < SIZE ; j++) {
+				System.out.print(bingo[i][j] + "\t");
+			}
+			System.out.println();
+		}
 		
 		
 		
