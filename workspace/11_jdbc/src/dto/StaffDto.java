@@ -17,7 +17,7 @@ import lombok.Data;
 // ** Getter and Setter 필수
 
 // Lombok사용.
-@Data  // -> Getter, Setter, 디폴드생성자를 만들어준다. (생성자값이 있는 생성자는 따로 만들어야 한다.)
+@Data  // -> Getter, Setter, 디폴드생성자, toString을 만들어준다. (생성자값이 있는 생성자는 따로 만들어야 한다.)
 public class StaffDto {
 
 	// field
@@ -26,11 +26,13 @@ public class StaffDto {
 	private String department;
 	private Date hireDate;
 	
+	// <자동으로 생성됨 : lombok 사용>
 	// constructor
 	// 생성자값이 있다는 것은 생성방법이 이것 하나뿐이다 : 디폴드 생성자를 사용할 수 없다.
+	// method : Getter and Setter
+	// method : toString() : Override
 	
 	
-	// method 
 	
 	
 	

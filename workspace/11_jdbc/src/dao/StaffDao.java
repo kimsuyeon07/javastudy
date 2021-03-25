@@ -5,6 +5,8 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import dto.StaffDto;
 import lombok.Data;
@@ -67,7 +69,28 @@ public class StaffDao {
 		}
 	}
 	
-	/***** 3. staff 추가하기  ******/
+	
+	/***** 3. 가장 최근에 추가된 staff의 no 알아내기   ******/
+	public int selectMaxNo() {
+		int no = 0;
+		try {
+			con = getConnection();
+			sql = "SELECT MAX(no) FROM staff";
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				no = rs.getInt(1);  // 가장 최근 칼럼의 no를 저장한다. 
+			} 
+		}catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(con, ps, rs);
+		}
+		return no;
+	}
+				
+	
+	/***** 4. [INSERT] staff 추가하기   ******/
 	// => StaffDto staffDto == int no, String name, String department, Date hireDate
 	public int insertStaff(StaffDto staffDto) {  // 삽입하고자 하는 스텝의 정보는 받아올 것
 		try {
@@ -85,6 +108,96 @@ public class StaffDao {
 		}
 		return result;  // 삽입되면 result는 1, 실패하면 result는 0을 반환합니다.
 	}
+	
+	
+	/***** 5. [UPDATE] staff 수정하기   ******/
+	public int updateStaff(StaffDto staffDto) {
+		try {
+			con = getConnection();
+			sql = "UPDATE staff SET name = ?, department = ? WHERE no = ?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, staffDto.getName());
+			ps.setString(2, staffDto.getDepartment());
+			ps.setInt(3, staffDto.getNo());
+			result = ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally { close(con, ps, null); }
+		return result;
+	}
+	
+	
+	/***** 6. [DELETE] staff 삭제하기   ******/
+	public int deleteStaff(StaffDto staffDto) {
+		try {
+			con = getConnection();
+			sql = "DELETE FROM staff WHERE no= ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, staffDto.getNo());
+			result = ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {close(con, ps, null);}
+		return result;
+	}
+	
+	
+	/***** 7. [SELECT] staff 조회하기   ******/
+	public StaffDto selectOneByNo(int no) {
+
+		StaffDto staffDto = null;
+		try {
+			con = getConnection();
+			sql = "SELECT no, name, department, hireDate FROM staff WHERE no = ?";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, no);
+			rs = ps.executeQuery();  // executeQuery() : SELECT
+			if (rs.next()) { // 내용이 추가됬는지 확인. 
+				staffDto = new StaffDto();
+				staffDto.setNo(rs.getInt(1));
+				staffDto.setName(rs.getString(2));
+				staffDto.setDepartment(rs.getString(3));
+				staffDto.setHireDate(rs.getDate(4));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally { close(con, ps, rs); }
+		return staffDto; // 경우에 따라서 null도 리턴받을 수 있다를 의미
+	}
+		
+		
+		
+	/***** 8. [SELECT] staff 전체 조회하기   ******/
+	public List<StaffDto> selectList() {
+		List<StaffDto> staffList = new ArrayList<StaffDto>();
+		try {
+			con = getConnection();
+			sql = "SELECT no, name, department, hireDate FROM staff";
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) { // 전달받을 내용이 있는만큼 반복하겠다.
+				StaffDto staffDto = new StaffDto();      
+				staffDto.setNo(rs.getInt(1));             // rs.getInt("no")
+				staffDto.setName(rs.getString(2));        // rs.getString("name")
+				staffDto.setDepartment(rs.getString(3));  // rs.getString("department")
+				staffDto.setHireDate(rs.getDate(4));      // rs.getDate("hireDate")
+				// List인터페이스에 저장하겠다.
+				staffList.add(staffDto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally { 
+			close(con, ps, rs); 
+		}
+		return staffList;
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
