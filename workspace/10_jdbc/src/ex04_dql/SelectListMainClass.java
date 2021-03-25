@@ -1,0 +1,78 @@
+package ex04_dql;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import connection.DBConnection;
+
+public class SelectListMainClass {
+
+	public static void main(String[] args) {
+
+		// rs.next() : 한 행씩 출력
+		// 여러개를 출력한다면 => while( rs.next() )처리한다.
+		
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			
+			con = DBConnection.getConnection();
+			String sql = "SELECT * SET staff";
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			// 결과 행 1개 : Map
+			// 결과 행 전체 : ArrayLsit : Map을 여러개 저장하는 List이다!
+			List<Map<String, Object>> staffList = new ArrayList<Map<String,Object>>();
+			while (rs.next()) {
+				Map<String, Object> staff = new HashMap<String, Object>();
+				staff.put("no", rs.getInt(1));
+				staff.put("name", rs.getString(2));
+				staff.put("department", rs.getString(3));
+				staff.put("hireDate", rs.getDate(4));
+				staffList.add(staff);
+			}
+			System.out.println("검색된 staff의 개수 : " + staffList.size());
+			for (Map<String, Object> staff : staffList) {
+				System.out.println(staff);
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(ps != null) ps.close();
+				if(con != null) con.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		// ArrayList => DB에서 검색해온 데이터들을 담아놓는 방식으로 많이 사용된다.
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+}
