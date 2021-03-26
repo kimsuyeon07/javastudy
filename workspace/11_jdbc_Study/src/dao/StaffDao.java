@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import dto.StaffDto;
 
@@ -51,7 +53,7 @@ public class StaffDao {
 		int no = 0;
 		try {
 			con = getConnection();
-			sql = "SELECT MAX(no) FROM staff";
+			sql = "SELECT MAX(no) FROM staff2";
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			if (rs.next()) {
@@ -67,7 +69,7 @@ public class StaffDao {
 	public int insertStaff(StaffDto staffDto) {
 		try {
 			con = getConnection();
-			sql = "INSERT INTO staff (no, name, department, hireDate) VALUES (?, ?, ?, SYSDATE)";
+			sql = "INSERT INTO staff2 (no, name, department, hireDate) VALUES (?, ?, ?, SYSDATE)";
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, staffDto.getNo());
 			ps.setString(2, staffDto.getName());
@@ -86,7 +88,7 @@ public class StaffDao {
 	public int updateStaff(StaffDto staffDto) {
 		try {
 			con = getConnection();
-			sql = "UPDATE staff SET name=?, department=? WHERE no=?";
+			sql = "UPDATE staff2 SET name=?, department=? WHERE no=?";
 			ps = con.prepareStatement(sql);
 			ps.setString(1, staffDto.getName());
 			ps.setString(2, staffDto.getDepartment());
@@ -106,7 +108,7 @@ public class StaffDao {
 	public int deleteStaff(StaffDto staffDto) {
 		try {
 			con = getConnection();
-			sql = "DELETE FROM staff  WHERE no=?";
+			sql = "DELETE FROM staff2  WHERE no=?";
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, staffDto.getNo());
 			result = ps.executeUpdate();
@@ -125,9 +127,10 @@ public class StaffDao {
 		StaffDto staffDto = null;
 		try {
 			con = getConnection();
-			sql = "SELECT no, name, department, hireDate FROM staff WHTER no=?";
+			sql = "SELECT no, name, department, hireDate FROM staff2 WHTER no=?";
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
+			ps.setInt(1, staffDto.getNo());
 			if (rs.next()) {
 				staffDto = new StaffDto();
 				staffDto.setNo(rs.getInt(1));
@@ -145,8 +148,29 @@ public class StaffDao {
 	
 	
 	
-	// ============ [INSERT] staff 추가하기 ============== //
-	
+	// ============ [SELECT] staff 전체 조회하기 ============== //
+	public List<StaffDto> selectList(){
+		List<StaffDto> staffList = new ArrayList<StaffDto>();
+		try {
+			con = getConnection();
+			sql = "SELECT no, name, department, hireDate FROM staff2" ;
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				StaffDto staffDto = new StaffDto();
+				staffDto.setNo(rs.getInt(1));
+				staffDto.setName(rs.getString(2));
+				staffDto.setDepartment(rs.getString(3));
+				staffDto.setHireDate(rs.getDate(4));;
+				staffList.add(staffDto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(con, ps, rs);
+		}
+		return staffList;
+	}
 	
 	
 	
