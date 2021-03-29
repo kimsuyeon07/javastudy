@@ -57,7 +57,7 @@ public class StaffManager {
 		System.out.print("신규 부서 이름 >>>");
 		String department = sc.next();
 		
-		// DB전달 순서 : 사용자 입력 > DAO 전달 > 데이터베이스(DB)전달
+		// DB전달 순서 : 사용자 입력 > DTO 전달 > DAO 전달 > 데이터베이스(DB)전달
 		// DB에 전달하기위해 StaffDao에 전달한다. 
 		// [ StaffDto클래스의 ] StaffDto staffDto에 값을 전달한다.
 		StaffDto staffDto = new StaffDto(); // StaffDto객체생성
