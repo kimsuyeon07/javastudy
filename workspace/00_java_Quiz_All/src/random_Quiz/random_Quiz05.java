@@ -41,6 +41,14 @@ public class random_Quiz05 {
 				lottoMaxArr[j] = j+1;
 			}
 			
+			for (int j = 0; j < lotto[i].length; j++) {
+				int idx = (int)(Math.random() * lottoMax) + 0;
+				lotto[i][j] = lottoMaxArr[idx];
+				
+			}
+			
+			
+			
 			
 		}
 		
