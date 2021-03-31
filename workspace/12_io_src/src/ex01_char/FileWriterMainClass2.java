@@ -19,7 +19,7 @@ import java.io.IOException;
  	 * ↓↓↓
  	 * fw.write(cbuf, off(start index), len(length:길이)); 를 사용하는 이유 ?
  	 * --
- 	 * (fw,write(cbuf)도 가능하지만,)
+ 	 * (fw.write(cbuf)도 가능하지만,)
  	 * 해당 방법은 경우에 따라서 원본보다 큰 데이터 용량을 전달 받을 수 있다 
  	 * => [배열의 공간에서 빈 공간을 다 한꺼번에 전달해버려서]
  */
