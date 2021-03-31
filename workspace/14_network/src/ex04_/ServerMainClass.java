@@ -4,7 +4,7 @@ import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Server {
+public class ServerMainClass {
 	
 	public static void main(String[] args) {
 		
