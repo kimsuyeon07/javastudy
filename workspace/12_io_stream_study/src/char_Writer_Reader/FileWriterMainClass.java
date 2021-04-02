@@ -17,7 +17,7 @@ public class FileWriterMainClass {
 			
 			
 //			fw.write(cbuf);
-			fw.write(cbuf, 0, 1); // 0번 인덱스 ~ 1개보내라.
+//			fw.write(cbuf, 0, 1); // 0번 인덱스 ~ 1개보내라.
 			fw.write(cbuf, 0, cbuf.length);
 			fw.write(str);
 			fw.write(ch);
